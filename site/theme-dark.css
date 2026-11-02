@@ -23,3 +23,11 @@ body,.header,.sidebar,main,.browse-toolbar,.filter-chips,.content-region,.scatte
 @media(max-width:800px){.sidebar.open{background:#000;box-shadow:10px 0 40px #0008}}
 th:first-child,td:first-child{background:#000;color:#ddd}.table-view{border-color:#292929}.edit-heading{border-color:#292929}
 .content-region{isolation:isolate}
+
+/* Compact, wrapping filter buttons; selected state is shown by contrast. */
+.facet-options{flex-direction:row;flex-wrap:wrap;gap:6px;align-items:flex-start}
+.facet-options button{display:inline-flex;align-items:center;gap:5px;width:auto;max-width:100%;padding:6px 8px;border:1px solid #383838;border-radius:5px;background:#000;color:#aaa;font-size:11px;white-space:nowrap}
+.facet-options button em{margin-left:0;color:#777}
+.facet-options button:hover{border-color:#888}
+.facet-options button.active{background:#eee;border-color:#eee;color:#000}
+.facet-options button.active em{color:#555}
