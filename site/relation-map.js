@@ -1,4 +1,4 @@
-import {visibleRelations} from './map-relations.js?v=20261103-classify';
+import {visibleRelations} from './map-relations.js?v=20261103-themes-only';
 export function createRelationMap(o){
  const canvas=o.canvas,board=o.board,dock=document.createElement('div');dock.className='relation-focus';dock.hidden=true;dock.setAttribute('aria-live','polite');canvas.parentElement.append(dock);
  let focus=null;

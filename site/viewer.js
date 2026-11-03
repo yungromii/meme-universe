@@ -1,6 +1,6 @@
-import {outerClusterLayout} from './canvas-layout.js?v=20261103-classify';
-import {allRelations} from './map-relations.js?v=20261103-classify';
-import {createRelationMap} from './relation-map.js?v=20261103-classify';
+import {outerClusterLayout} from './canvas-layout.js?v=20261103-themes-only';
+import {allRelations} from './map-relations.js?v=20261103-themes-only';
+import {createRelationMap} from './relation-map.js?v=20261103-themes-only';
 import {childrenOf,outerItems} from './hierarchy.js';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let archive,items=[],defs={},byId=new Map(),lang='ko';try{lang=localStorage.getItem('meme-universe-language')==='en'?'en':'ko'}catch{}
@@ -20,7 +20,7 @@ function filters(){
 function hash(id){let h=2166136261;for(const c of id)h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0}
 function updateLayout(){layout.clear();const all=state.mapId?[byId.get(state.mapId),...children(state.mapId)]:outerItems(items),grid=outerClusterLayout(all,defs);all.forEach((r,i)=>{const h=hash(r.id);let p;if(state.mapId){const a=(i-1)*2.3999632297-.8,d=325+Math.floor((i-1)/7)*200;p=i?{x:Math.cos(a)*d-90,y:Math.sin(a)*d-90,w:180,h:180,rotate:(h%100-50)/10}:{x:-130,y:-130,w:260,h:260,rotate:0}}else p=grid.get(r.id);const saved=positions.get((state.mapId||'outer')+':'+r.id)||(state.mapId?r.innerPosition:null);if(saved){p.x=saved.x;p.y=saved.y}layout.set(r.id,p)})}
 function drawLinks(){relationMap.draw()}
-function applyCamera(){$('#scatterBoard').style.transform=`translate(${camera.x}px,${camera.y}px) scale(${camera.scale})`;$('#zoomLabel').textContent=Math.round(camera.scale*100)+'%'}
+function applyCamera(){$('#scatterBoard').style.setProperty('--map-line-width',(1.2/camera.scale)+'px');$('#scatterBoard').style.setProperty('--map-line-active-width',(2/camera.scale)+'px');$('#scatterBoard').style.setProperty('--map-line-dash',(6/camera.scale)+' '+(5/camera.scale));$('#scatterBoard').style.transform=`translate(${camera.x}px,${camera.y}px) scale(${camera.scale})`;$('#zoomLabel').textContent=Math.round(camera.scale*100)+'%'}
 function fit(){if(canvas.hidden||!canvas.clientWidth)return;const ps=mapRows().map(r=>layout.get(r.id)).filter(Boolean);if(!ps.length)return;const left=Math.min(...ps.map(p=>p.x-30)),right=Math.max(...ps.map(p=>p.x+p.w+30)),top=Math.min(...ps.map(p=>p.y-30)),bottom=Math.max(...ps.map(p=>p.y+p.h+30));camera.scale=Math.max(.025,Math.min(state.mapId?1:1.35,(canvas.clientWidth-55)/(right-left),(canvas.clientHeight-95)/(bottom-top)));camera.x=(canvas.clientWidth-(left+right)*camera.scale)/2;camera.y=(canvas.clientHeight-35-(top+bottom)*camera.scale)/2;if(state.mapId)fitScale=camera.scale;applyCamera()}
 function render(){
  if(!archive)return;filters();const visible=rows(),mapped=mapRows();$('#totalCount').textContent=items.length;$('#criteriaCount').textContent=Object.keys(defs).length;
@@ -58,4 +58,4 @@ function relationPanel(r){const edges=allRelations(items,archive.relations||[]).
 const relationMap=createRelationMap({canvas,board:$('#scatterBoard'),items:()=>items,defs:()=>defs,relations:()=>archive?.relations||[],mapId:()=>state.mapId,visible:mapRows,layout:()=>layout,view:()=>state.view,lang:()=>lang,escape:esc,name,onDetail:detail,onEnter:enter,suppressed:()=>performance.now()<suppressUntil});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!state.selected)relationMap.clear()});
 
-applyChrome();try{const res=await fetch('./data.json?v=20261103-classify',{cache:'no-store'});if(!res.ok)throw Error('Load failed');archive=await res.json();defs=archive.defs;items=archive.items;byId=new Map(items.map(r=>[r.id,r]));render()}catch{$('#loadError').hidden=false;$('#loadError').textContent=lang==='en'?'Could not load the collection. Please reload.':'자료를 불러오지 못했습니다. 새로고침해 주세요.'}
+applyChrome();try{const res=await fetch('./data.json?v=20261103-themes-only',{cache:'no-store'});if(!res.ok)throw Error('Load failed');archive=await res.json();defs=archive.defs;items=archive.items;byId=new Map(items.map(r=>[r.id,r]));render()}catch{$('#loadError').hidden=false;$('#loadError').textContent=lang==='en'?'Could not load the collection. Please reload.':'자료를 불러오지 못했습니다. 새로고침해 주세요.'}
