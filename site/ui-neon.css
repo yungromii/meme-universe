@@ -1,8 +1,8 @@
 /* A restrained light halo on interface borders. */
-:root{--ui-edge-gradient:linear-gradient(115deg,#a0e4f5 0%,#8ec9f0 30%,#b5a4ef 66%,#758fa8 100%);--ui-edge-glow:rgba(139,190,246,.22)}
+:root{--ui-edge-gradient:linear-gradient(115deg,#ffffff 0%,#ffffff 30%,#ffffff 66%,#ffffff 100%);--ui-edge-glow:rgba(255,255,255,.22)}
 :is(.search,.view-tabs,.language-btn,.help-btn,.outline-btn,.canvas-tools>div,.map-bar>*,.facet-options button,.filter-chip,.edit-values button,.public-tags span){position:relative;isolation:isolate}
 :is(.chrome-controls,.relation-focus,.editor-dialog){isolation:isolate}
-:is(.search,.view-tabs,.language-btn,.help-btn,.outline-btn,.chrome-controls,.canvas-tools>div,.map-bar>*,.relation-focus,.facet-options button,.filter-chip,.edit-values button,.public-tags span,.editor-dialog){border-color:#6e849a;box-shadow:0 0 8px -2px var(--ui-edge-glow),inset 0 0 5px -3px rgba(177,177,244,.2)}
+:is(.search,.view-tabs,.language-btn,.help-btn,.outline-btn,.chrome-controls,.canvas-tools>div,.map-bar>*,.relation-focus,.facet-options button,.filter-chip,.edit-values button,.public-tags span,.editor-dialog){border-color:#ffffff;box-shadow:0 0 8px -2px var(--ui-edge-glow),inset 0 0 5px -3px rgba(255,255,255,.2)}
 :is(.search,.view-tabs,.language-btn,.help-btn,.outline-btn,.chrome-controls,.canvas-tools>div,.map-bar>*,.relation-focus,.facet-options button,.filter-chip,.edit-values button,.public-tags span,.editor-dialog)::before,
 :is(.search,.view-tabs,.language-btn,.help-btn,.outline-btn,.chrome-controls,.canvas-tools>div,.map-bar>*,.relation-focus,.facet-options button,.filter-chip,.edit-values button,.public-tags span,.editor-dialog)::after{
  content:'';position:absolute;pointer-events:none;border-radius:inherit;background:var(--ui-edge-gradient);padding:1px;
@@ -13,7 +13,12 @@
 :is(.facet-options button,.filter-chip,.edit-values button,.public-tags span)::after{opacity:.48}
 :is(.facet-options button,.filter-chip,.edit-values button,.public-tags span)::before{opacity:.17;filter:blur(2px)}
 .search:focus-within::after,.view-tabs:focus-within::after,.language-btn:hover::after,.outline-btn:hover::after,.facet-options button:hover::after{opacity:1}
-:is(.header,.browse-toolbar,.filter-chips:not(:empty),.facet,.detail-top,.detail-section){border-image:linear-gradient(90deg,rgba(142,211,239,.7),rgba(180,164,235,.6) 56%,rgba(99,143,175,.32)) 1;box-shadow:0 3px 8px -6px rgba(137,193,243,.65)}
-.sidebar{border-image:linear-gradient(180deg,rgba(156,218,245,.75),rgba(173,161,231,.55) 52%,rgba(113,153,186,.4)) 1;box-shadow:3px 0 9px -6px rgba(149,185,244,.65)}
-.detail{border-image:linear-gradient(180deg,rgba(156,218,245,.75),rgba(173,161,231,.55) 52%,rgba(113,153,186,.4)) 1;box-shadow:-3px 0 10px -6px rgba(149,185,244,.65)}
-.form-label :is(input,textarea,select),.option-row input,.connect-search,.relation-form :is(input,select){border-color:#6a7f96;box-shadow:0 0 7px -4px rgba(150,186,239,.5)}
+:is(.header,.browse-toolbar,.filter-chips:not(:empty),.facet,.detail-top,.detail-section){border-image:linear-gradient(90deg,rgba(255,255,255,.7),rgba(255,255,255,.6) 56%,rgba(255,255,255,.32)) 1;box-shadow:0 3px 8px -6px rgba(255,255,255,.65)}
+.sidebar{border-image:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.55) 52%,rgba(255,255,255,.4)) 1;box-shadow:3px 0 9px -6px rgba(255,255,255,.65)}
+.detail{border-image:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.55) 52%,rgba(255,255,255,.4)) 1;box-shadow:-3px 0 10px -6px rgba(255,255,255,.65)}
+.form-label :is(input,textarea,select),.option-row input,.connect-search,.relation-form :is(input,select){border-color:#ffffff;box-shadow:0 0 7px -4px rgba(255,255,255,.5)}
+
+/* Neutral white edges throughout the interface. */
+:root{--line:#fff}
+:is(th,td,.table-view,.relationship-panel,.connect-choice,.dropzone,.settings-list>div,.edit-heading,.relation-section,.relation-entry,.relation-focus button,.relation-form input,.relation-form select,.editor-dialog button,.primary-btn){border-color:#fff}
+.edit-values button.active,.connect-choice:has(input:checked),.bulk-value:has(input:checked),.dropzone.dragging,.editor-dialog button.primary-btn{border-color:#fff}
