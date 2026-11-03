@@ -29,3 +29,19 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .brand b,.header .brand b,.main-heading h1,.detail h2,.detail-content h2,.editor-dialog h2,.sidebar-heading h2,.facet-heading,.view-tabs button.active,.scope-tabs button.active,.language-btn,.map-bar #mapTitle,.parent-link{font-weight:400}
 .facet-heading .axis-badge,.axis-field label span,.col-header b,.row-header b,.tray-heading b,.edit-heading b,.edit-label b,.help-item b,.relationship-heading b,.relation-focus-heading strong{font-weight:400}
 .form-label,.detail-content .form-label,.form-label textarea,.table-item,.relation-entry b,.relation-neighbors b,.scope-tabs button b,.sidebar-heading h2 span,.facet-options button,.public-tags span,.filter-chip{font-weight:300}
+
+/* Fine controls use one hairline; the larger interface frames keep their halo. */
+:root{--ui-hairline:.5px;--ui-fine-line:rgba(255,255,255,.65)}
+:is(.facet-options button,.filter-chip,.edit-values button,.edit-values button.active,.public-tags span,.language-btn,.help-btn,.outline-btn,.map-bar>*,.relation-focus button,.editor-dialog button,.editor-dialog button.primary-btn,.primary-btn){border:var(--ui-hairline) solid var(--ui-fine-line);box-shadow:none}
+:is(.facet-options button,.filter-chip,.edit-values button,.public-tags span,.language-btn,.help-btn,.outline-btn,.map-bar>*,.relation-focus button,.editor-dialog button,.primary-btn)::before,
+:is(.facet-options button,.filter-chip,.edit-values button,.public-tags span,.language-btn,.help-btn,.outline-btn,.map-bar>*,.relation-focus button,.editor-dialog button,.primary-btn)::after{content:none;box-shadow:none;filter:none}
+.facet-options button.active,.edit-values button.active{border-color:#fff}
+
+/* A single internal grid, with no second frame around the scroll container. */
+.table-view{border:0;border-image:none;border-radius:0;outline:none;box-shadow:none}
+.table-view::before,.table-view::after{content:none}
+.table-view table{border:0;border-image:none;outline:none;box-shadow:none;border-collapse:separate;border-spacing:0}
+.table-view :is(thead,tbody,tr){border:0;outline:none;box-shadow:none}
+.table-view :is(th,td){border:0;border-image:none;border-right:var(--ui-hairline) solid var(--ui-fine-line);border-bottom:var(--ui-hairline) solid var(--ui-fine-line);box-shadow:none}
+.table-view :is(th,td):last-child{border-right:0}
+.table-view tbody tr:last-child td{border-bottom:0}
