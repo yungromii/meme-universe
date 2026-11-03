@@ -1,6 +1,6 @@
-import {outerClusterLayout} from './canvas-layout.js?v=20261103-links';
-import {allRelations} from './map-relations.js?v=20261103-links';
-import {createRelationMap} from './relation-map.js?v=20261103-links';
+import {outerClusterLayout} from './canvas-layout.js?v=20261103-classify';
+import {allRelations} from './map-relations.js?v=20261103-classify';
+import {createRelationMap} from './relation-map.js?v=20261103-classify';
 import {childrenOf,outerItems} from './hierarchy.js';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let archive,items=[],defs={},byId=new Map(),lang='ko';try{lang=localStorage.getItem('meme-universe-language')==='en'?'en':'ko'}catch{}
@@ -55,7 +55,7 @@ const translations=new WeakMap(),attributeTranslations=new WeakMap();function lo
 $('#languageBtn').onclick=()=>{lang=lang==='en'?'ko':'en';try{localStorage.setItem('meme-universe-language',lang)}catch{}render();if(state.selected)detail(state.selected)};
 
 function relationPanel(r){const edges=allRelations(items,archive.relations||[]).filter(e=>!e.implicit&&(e.from===r.id||e.to===r.id));if(!edges.length)return '';return `<section class="relation-section"><h3>${lang==='en'?'Connections':'자료 연결'}</h3>${edges.map(edge=>{const other=byId.get(edge.from===r.id?edge.to:edge.from);return `<div class="relation-entry"><button class="relation-target" data-item="${other.id}">${media(other)}<span><b data-no-translate>${esc(name(other))}</b></span></button></div>`}).join('')}</section>`}
-const relationMap=createRelationMap({canvas,board:$('#scatterBoard'),items:()=>items,relations:()=>archive?.relations||[],mapId:()=>state.mapId,visible:mapRows,layout:()=>layout,view:()=>state.view,lang:()=>lang,escape:esc,name,onDetail:detail,onEnter:enter,suppressed:()=>performance.now()<suppressUntil});
+const relationMap=createRelationMap({canvas,board:$('#scatterBoard'),items:()=>items,defs:()=>defs,relations:()=>archive?.relations||[],mapId:()=>state.mapId,visible:mapRows,layout:()=>layout,view:()=>state.view,lang:()=>lang,escape:esc,name,onDetail:detail,onEnter:enter,suppressed:()=>performance.now()<suppressUntil});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!state.selected)relationMap.clear()});
 
-applyChrome();try{const res=await fetch('./data.json?v=20261103-links',{cache:'no-store'});if(!res.ok)throw Error('Load failed');archive=await res.json();defs=archive.defs;items=archive.items;byId=new Map(items.map(r=>[r.id,r]));render()}catch{$('#loadError').hidden=false;$('#loadError').textContent=lang==='en'?'Could not load the collection. Please reload.':'자료를 불러오지 못했습니다. 새로고침해 주세요.'}
+applyChrome();try{const res=await fetch('./data.json?v=20261103-classify',{cache:'no-store'});if(!res.ok)throw Error('Load failed');archive=await res.json();defs=archive.defs;items=archive.items;byId=new Map(items.map(r=>[r.id,r]));render()}catch{$('#loadError').hidden=false;$('#loadError').textContent=lang==='en'?'Could not load the collection. Please reload.':'자료를 불러오지 못했습니다. 새로고침해 주세요.'}
