@@ -302,6 +302,10 @@ body:has(#tableView:not([hidden])) .header{background:#000!important}
 .header-collapsed .sidebar{padding-top:0}
 .gallery-view,.table-view{padding-top:calc(var(--overlay-header-height) + 18px)}
 .header-collapsed .gallery-view,.header-collapsed .table-view{padding-top:18px}
+/* Start the table scroll viewport directly below the fixed header. */
+.table-view{height:calc(100% - var(--overlay-header-height));margin-top:var(--overlay-header-height);padding-top:0}
+.header-collapsed .table-view{height:100%;margin-top:0;padding-top:0}
+.table-view thead th:not(:first-child){color:#ffe45c}
 @media(max-width:800px){
   :root{--overlay-header-height:132px}
   .sidebar.open{padding-top:0}
