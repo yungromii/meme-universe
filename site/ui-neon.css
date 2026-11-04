@@ -175,3 +175,18 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .facet,.filter-chips:not(:empty),.detail-top{border-color:rgba(255,255,255,.58)}
 .sidebar{box-shadow:2px 0 5px -3px rgba(255,255,255,.68),4px 0 10px -6px rgba(255,255,255,.36)}
 .detail{box-shadow:-2px 0 5px -3px rgba(255,255,255,.68),-4px 0 10px -6px rgba(255,255,255,.36)}
+
+/* Remove the view switcher frame and separate labels with pipes. */
+.header .view-tabs{
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.header .view-tabs button{padding-left:8px;padding-right:8px}
+.header .view-tabs button:not(:first-child)::before{
+  content:"|";
+  display:inline-block;
+  margin-right:9px;
+  color:rgba(255,255,255,.54);
+  font-weight:300;
+}
