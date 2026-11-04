@@ -212,3 +212,29 @@ b,strong,h1,h2,h3,h4{font-weight:400}
   border-radius:4px;
   color:#fff!important;
 }
+
+/* Keep the detail panel to one scroll area and remove incidental div frames. */
+#detail{overflow-x:hidden}
+#detail .detail-image{
+  padding:0;
+  border:0!important;
+  border-radius:0;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#detail .detail-image img{border:0!important;outline:0!important;box-shadow:none!important}
+#detail .detail-section{
+  padding:14px 0 8px;
+  border:0!important;
+  border-image:none!important;
+  box-shadow:none!important;
+}
+#detail .relationship-panel{
+  margin:16px 0;
+  padding:12px 0;
+  border:0!important;
+  border-radius:0;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#detail .public-tags span{border-color:rgba(255,255,255,.28);box-shadow:none!important}
