@@ -66,3 +66,25 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .facet-heading .facet-name{color:#ffe45c}
 /* The selected view uses a clear white tab. */
 .view-tabs button.active{background:#fff!important;color:#000!important;border-color:#fff!important}
+
+/* Keep the three header controls aligned on one translucent surface. */
+.header .search,
+.header .view-tabs,
+.header .language-btn{
+  height:38px;
+  min-height:38px;
+  box-sizing:border-box;
+  background-color:rgba(255,255,255,.5);
+  border-color:rgba(255,255,255,.56);
+  color:#111;
+}
+.header .search{padding-top:0;padding-bottom:0}
+.header .search input{color:#111}
+.header .search input::placeholder{color:rgba(0,0,0,.62)}
+.header .view-tabs{padding:2px;align-items:stretch}
+.header .view-tabs button{
+  height:100%;
+  box-sizing:border-box;
+  color:rgba(0,0,0,.76);
+}
+.header .view-tabs button.active{background:#fff!important;color:#000!important;border-color:#fff!important}
