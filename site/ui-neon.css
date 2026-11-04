@@ -127,3 +127,29 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .scatter-view .scatter-card .media-symbol{
   filter:drop-shadow(0 0 3px rgba(255,255,255,.82)) drop-shadow(0 0 8px rgba(255,255,255,.42));
 }
+
+/* Return the three header controls to a dark, outlined treatment. */
+.header .search,
+.header .view-tabs,
+.header .language-btn{
+  background:#000;
+  border:1px solid rgba(255,255,255,.72)!important;
+  box-shadow:none!important;
+  color:#fff;
+}
+.header .search{border-radius:5px}
+.header .search input{color:#fff}
+.header .search input::placeholder{color:rgba(255,255,255,.64)}
+.header .view-tabs{padding:0;gap:0}
+.header .view-tabs button{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0;
+  box-shadow:none!important;
+  color:rgba(255,255,255,.76);
+}
+.header .view-tabs button.active{
+  background:transparent!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
