@@ -153,3 +153,11 @@ b,strong,h1,h2,h3,h4{font-weight:400}
   color:#fff!important;
   box-shadow:none!important;
 }
+.sidebar-heading h2{color:#ffe45c}
+.sidebar-heading h2 #criteriaCount{color:rgba(255,255,255,.62)}
+.header .language-btn{
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#83dcff!important;
+}
