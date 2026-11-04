@@ -48,3 +48,15 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .table-view :is(th,td){border:0;border-image:none;border-right:var(--ui-hairline) solid var(--ui-fine-line);border-bottom:var(--ui-hairline) solid var(--ui-fine-line);box-shadow:none}
 .table-view :is(th,td):last-child{border-right:0}
 .table-view tbody tr:last-child td{border-bottom:0}
+
+
+/* Color each title character like a small rainbow spectrum. */
+.brand b{color:inherit!important;display:inline-block;white-space:pre}.brand b .rainbow-letter{display:inline-block}
+.brand b .rainbow-letter{color:var(--rainbow-color);background:none;-webkit-text-fill-color:var(--rainbow-color)}
+.brand b .rainbow-letter:nth-child(7n+1){--rainbow-color:#ff666f}
+.brand b .rainbow-letter:nth-child(7n+2){--rainbow-color:#ffad55}
+.brand b .rainbow-letter:nth-child(7n+3){--rainbow-color:#ffe66d}
+.brand b .rainbow-letter:nth-child(7n+4){--rainbow-color:#83e28a}
+.brand b .rainbow-letter:nth-child(7n+5){--rainbow-color:#6bd5ed}
+.brand b .rainbow-letter:nth-child(7n+6){--rainbow-color:#829bff}
+.brand b .rainbow-letter:nth-child(7n){--rainbow-color:#e48df0}
