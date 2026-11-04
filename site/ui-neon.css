@@ -170,7 +170,7 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .filter-chips:not(:empty),
 .detail-top,
 .detail-section{
-  box-shadow:0 1px 4px -2px rgba(255,255,255,.68),0 1px 8px -4px rgba(255,255,255,.36);
+  box-shadow:0 1px 4px -2px rgba(255,255,255,.76),0 1px 8px -4px rgba(255,255,255,.42)!important;
 }
 .facet,.filter-chips:not(:empty),.detail-top{border-color:rgba(255,255,255,.58)}
 .sidebar{box-shadow:2px 0 5px -3px rgba(255,255,255,.68),4px 0 10px -6px rgba(255,255,255,.36)}
