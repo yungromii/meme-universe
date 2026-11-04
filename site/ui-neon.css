@@ -60,3 +60,9 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .brand b .rainbow-letter:nth-child(7n+5){--rainbow-color:#6bd5ed}
 .brand b .rainbow-letter:nth-child(7n+6){--rainbow-color:#829bff}
 .brand b .rainbow-letter:nth-child(7n){--rainbow-color:#e48df0}
+
+
+/* Highlight only the main filter category names. */
+.facet-heading .facet-name{color:#ffe45c}
+/* The selected view uses a clear white tab. */
+.view-tabs button.active{background:#fff!important;color:#000!important;border-color:#fff!important}
