@@ -190,3 +190,25 @@ b,strong,h1,h2,h3,h4{font-weight:400}
   color:rgba(255,255,255,.54);
   font-weight:300;
 }
+
+/* Use the search outline's solid white for every section divider. */
+.header,
+.sidebar,
+.sidebar-heading,
+.facet,
+.browse-toolbar,
+.filter-chips:not(:empty),
+.detail,
+.detail-top,
+.detail-section{
+  border-image:none!important;
+  border-color:rgba(255,255,255,.72)!important;
+}
+/* Highlight only the active view with a quiet gray block. */
+.header .view-tabs button{background:transparent!important}
+.header .view-tabs button.active{
+  background:rgba(255,255,255,.2)!important;
+  border:0!important;
+  border-radius:4px;
+  color:#fff!important;
+}
