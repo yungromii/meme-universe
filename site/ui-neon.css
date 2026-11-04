@@ -296,6 +296,8 @@ b,strong,h1,h2,h3,h4{font-weight:400}
   box-shadow:none!important;pointer-events:none;
 }
 .header>*{pointer-events:auto}
+body:has(#galleryView:not([hidden])) .header,
+body:has(#tableView:not([hidden])) .header{background:#000!important}
 .sidebar{padding-top:var(--overlay-header-height)}
 .header-collapsed .sidebar{padding-top:0}
 .gallery-view,.table-view{padding-top:calc(var(--overlay-header-height) + 18px)}
@@ -312,4 +314,11 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .scatter-view.grabbing .scatter-card img,.scatter-view.grabbing .scatter-card .media-symbol{transform:none}
 @media(prefers-reduced-motion:reduce){
   .scatter-view .scatter-card img,.scatter-view .scatter-card .media-symbol{transition:none}
+}
+
+/* Place separators between view buttons, outside each active button's fill. */
+.header .view-tabs button:not(:first-child){position:relative;margin-left:14px}
+.header .view-tabs button:not(:first-child)::before{
+  position:absolute;left:-9px;top:50%;transform:translateY(-50%);
+  margin:0;pointer-events:none;
 }
