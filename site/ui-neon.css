@@ -265,15 +265,15 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 }
 .galaxy-stars{position:absolute;inset:-6%;z-index:0;pointer-events:none;overflow:hidden}
 .galaxy-star{
-  position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);
+  position:absolute;left:var(--x);top:var(--y);width:calc(var(--size) * .82);height:calc(var(--size) * .82);
   border-radius:50%;pointer-events:none;
   background:radial-gradient(circle,rgba(var(--rgb),.95) 0 1px,rgba(var(--rgb),.58) 2px,rgba(var(--rgb),.22) 35%,transparent 74%);
-  transform:translate(-50%,-50%) scale(.65);opacity:.4;
+  transform:translate(-50%,-50%) scale(.55);opacity:.35;
   animation:galaxy-twinkle var(--duration) ease-in-out var(--delay) infinite alternate;
 }
 @keyframes galaxy-twinkle{
-  from{transform:translate(-50%,-50%) scale(.65);opacity:.38}
-  to{transform:translate(-50%,-50%) scale(1.65);opacity:1}
+  from{transform:translate(-50%,-50%) scale(.55);opacity:.35}
+  to{transform:translate(-50%,-50%) scale(1.05);opacity:.84}
 }
 .scatter-view .scatter-board,.scatter-view #canvasEmpty{z-index:1}
 @keyframes galaxy-breathe{
@@ -286,4 +286,30 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 }
 @media(prefers-reduced-motion:reduce){
   .scatter-view::before,.scatter-view::after,.galaxy-star{animation:none;opacity:.82}
+}
+
+/* Let the canvas run behind the controls while keeping the controls in place. */
+:root{--overlay-header-height:65px}
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:40;
+  background:transparent!important;border:0!important;border-image:none!important;
+  box-shadow:none!important;pointer-events:none;
+}
+.header>*{pointer-events:auto}
+.sidebar{padding-top:var(--overlay-header-height)}
+.header-collapsed .sidebar{padding-top:0}
+.gallery-view,.table-view{padding-top:calc(var(--overlay-header-height) + 18px)}
+.header-collapsed .gallery-view,.header-collapsed .table-view{padding-top:18px}
+@media(max-width:800px){
+  :root{--overlay-header-height:132px}
+  .sidebar.open{padding-top:0}
+}
+
+/* A small, reversible hover cue on canvas thumbnails. */
+.scatter-view .scatter-card img,.scatter-view .scatter-card .media-symbol{transition:transform .18s ease-out}
+.scatter-view .scatter-card:hover img,.scatter-view .scatter-card:hover .media-symbol,
+.scatter-view .scatter-card:focus-within img,.scatter-view .scatter-card:focus-within .media-symbol{transform:scale(1.08)}
+.scatter-view.grabbing .scatter-card img,.scatter-view.grabbing .scatter-card .media-symbol{transform:none}
+@media(prefers-reduced-motion:reduce){
+  .scatter-view .scatter-card img,.scatter-view .scatter-card .media-symbol{transition:none}
 }
